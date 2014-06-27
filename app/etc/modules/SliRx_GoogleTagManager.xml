@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<SliRx_GoogleTagManager>
+			<active>true</active>
+			<codePool>local</codePool>
+		</SliRx_GoogleTagManager>
+	</modules>
+</config>
