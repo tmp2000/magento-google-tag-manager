@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+		<slirx_google_tag_manager translate="label" module="slirx_google_tag_manager">
+			<label>GTM</label>
+			<sort_order>9999</sort_order>
+		</slirx_google_tag_manager>
+	</tabs>
+	<sections>
+		<slirx_gtm translate="label" module="slirx_google_tag_manager">
+			<label>Настройка</label>
+			<tab>slirx_google_tag_manager</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>999</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<slirx_gtm_group translate="label">
+					<label>Настройка</label>
+					<sort_order>1100</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<enable translate="label">
+							<label>Enabled</label>
+							<frontend_type>select</frontend_type>
+							<sort_order>0</sort_order>
+							<source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable>
+						<container_id  translate="label">
+							<label>Container ID</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</container_id>
+						<enable_remarketing translate="label">
+							<label>Enable remarketing</label>
+							<frontend_type>select</frontend_type>
+							<sort_order>2</sort_order>
+							<source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable_remarketing>
+						<enable_transaction translate="label">
+							<label>Enable checkout transaction</label>
+							<frontend_type>select</frontend_type>
+							<sort_order>3</sort_order>
+							<source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable_transaction>
+					</fields>
+				</slirx_gtm_group>
+			</groups>
+		</slirx_gtm>
+	</sections>
+</config>

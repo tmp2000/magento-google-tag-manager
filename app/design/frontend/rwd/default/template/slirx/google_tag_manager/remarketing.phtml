@@ -1,0 +1,13 @@
+<?php
+$helper = Mage::helper('slirx_google_tag_manager');
+if ($helper->isActive() && $helper->isActiveRemarketing()): ?>
+<script type="text/javascript">
+    jQuery(function() {
+        try {
+            dataLayer.push(<?= $this->getRemarketingData() ?>);
+        }
+        catch (err) {
+        }
+    });
+</script>
+<?php endif; ?>
