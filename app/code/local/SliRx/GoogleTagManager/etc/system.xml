@@ -2,13 +2,13 @@
 <config>
 	<tabs>
 		<slirx_google_tag_manager translate="label" module="slirx_google_tag_manager">
-			<label>GTM</label>
-			<sort_order>9999</sort_order>
+			<label>Google Tag Manager</label>
+			<sort_order>1</sort_order>
 		</slirx_google_tag_manager>
 	</tabs>
 	<sections>
 		<slirx_gtm translate="label" module="slirx_google_tag_manager">
-			<label>Настройка</label>
+			<label>Configuration</label>
 			<tab>slirx_google_tag_manager</tab>
 			<frontend_type>text</frontend_type>
 			<sort_order>999</sort_order>
@@ -17,7 +17,7 @@
 			<show_in_store>1</show_in_store>
 			<groups>
 				<slirx_gtm_group translate="label">
-					<label>Настройка</label>
+					<label>Configuration</label>
 					<sort_order>1100</sort_order>
 					<show_in_default>1</show_in_default>
 					<show_in_website>1</show_in_website>
