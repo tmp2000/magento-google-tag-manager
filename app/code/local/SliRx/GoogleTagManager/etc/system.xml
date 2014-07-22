@@ -17,8 +17,8 @@
 			<show_in_store>1</show_in_store>
 			<groups>
 				<slirx_gtm_group translate="label">
-					<label>Configuration</label>
-					<sort_order>1100</sort_order>
+					<label>General</label>
+					<sort_order>0</sort_order>
 					<show_in_default>1</show_in_default>
 					<show_in_website>1</show_in_website>
 					<show_in_store>1</show_in_store>
@@ -32,34 +32,60 @@
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
 						</enable>
-						<container_id  translate="label">
-							<label>Container ID</label>
+						<container_id translate="label">
+						<label>Container ID</label>
 							<frontend_type>text</frontend_type>
 							<sort_order>1</sort_order>
 							<show_in_default>1</show_in_default>
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
 						</container_id>
+					</fields>
+				</slirx_gtm_group>
+				<slirx_gtm_remarketing_group translate="label">
+					<label>Remarketing</label>
+					<sort_order>1</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
 						<enable_remarketing translate="label">
-							<label>Enable remarketing</label>
+							<label>Enable dynamic remarketing</label>
 							<frontend_type>select</frontend_type>
-							<sort_order>2</sort_order>
+							<sort_order>0</sort_order>
 							<source_model>adminhtml/system_config_source_enabledisable</source_model>
 							<show_in_default>1</show_in_default>
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
 						</enable_remarketing>
+					</fields>
+				</slirx_gtm_remarketing_group>
+				<slirx_gtm_transaction_group translate="label">
+					<label>Transaction</label>
+					<sort_order>2</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
 						<enable_transaction translate="label">
-							<label>Enable checkout transaction</label>
+							<label>Enable transactions</label>
 							<frontend_type>select</frontend_type>
-							<sort_order>3</sort_order>
+							<sort_order>0</sort_order>
 							<source_model>adminhtml/system_config_source_enabledisable</source_model>
 							<show_in_default>1</show_in_default>
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
 						</enable_transaction>
+						<transaction_affiliation translate="label">
+							<label>Transaction affiliation</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</transaction_affiliation>
 					</fields>
-				</slirx_gtm_group>
+				</slirx_gtm_transaction_group>
 			</groups>
 		</slirx_gtm>
 	</sections>

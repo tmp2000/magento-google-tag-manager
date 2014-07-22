@@ -14,6 +14,7 @@ class SliRx_GoogleTagManager_Block_Transactions extends Mage_Checkout_Block_Succ
 
     public function getTransactionsData()
     {
+        $helper = Mage::helper('slirx_google_tag_manager');
         $data = [];
 
         if ($this->_orderId) {
@@ -29,7 +30,7 @@ class SliRx_GoogleTagManager_Block_Transactions extends Mage_Checkout_Block_Succ
 
             $data = [
                 'transactionId'          => $order->getIncrementId(),
-                'transactionAffiliation' => 'Kolesiko',
+                'transactionAffiliation' => $helper->getTransactionAffiliation(),
                 'transactionTotal'       => $priceAll,
                 'transactionTax'         => '',
                 'transactionShipping'    => round($order->getShippingAmount(), 2),

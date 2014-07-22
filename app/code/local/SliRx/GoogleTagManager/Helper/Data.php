@@ -7,8 +7,9 @@ class SliRx_GoogleTagManager_Helper_Data extends Mage_Core_Helper_Abstract
 {
     const XML_PATH_ENABLED = 'slirx_gtm/slirx_gtm_group/enable';
     const XML_PATH_CONTAINER_ID = 'slirx_gtm/slirx_gtm_group/container_id';
-    const XML_PATH_ENABLE_REMARKETING = 'slirx_gtm/slirx_gtm_group/enable_remarketing';
-    const XML_PATH_ENABLE_TRANSACTION = 'slirx_gtm/slirx_gtm_group/enable_transaction';
+    const XML_PATH_ENABLE_REMARKETING = 'slirx_gtm/slirx_gtm_remarketing_group/enable_remarketing';
+    const XML_PATH_ENABLE_TRANSACTION = 'slirx_gtm/slirx_gtm_transaction_group/enable_transaction';
+    const XML_PATH_TRANSACTION_AFFILIATION = 'slirx_gtm/slirx_gtm_transaction_group/transaction_affiliation';
 
     /**
      * Return module status
@@ -48,5 +49,15 @@ class SliRx_GoogleTagManager_Helper_Data extends Mage_Core_Helper_Abstract
     public function isActiveTransaction()
     {
         return Mage::getStoreConfig(self::XML_PATH_ENABLE_TRANSACTION);
+    }
+
+    /**
+     * Return transaction affiliation
+     *
+     * @return string
+     */
+    public function getTransactionAffiliation()
+    {
+        return Mage::getStoreConfig(self::XML_PATH_TRANSACTION_AFFILIATION);
     }
 }
