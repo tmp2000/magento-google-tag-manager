@@ -23,8 +23,8 @@ class SliRx_GoogleTagManager_Block_Remarketing extends Mage_Core_Block_Template
                 break;
 
             case 'category':
-                $category = Mage::registry('current_category');
-                $products = $category->getProductCollection();
+                $products = Mage::getBlockSingleton('catalog/product_list')->getLoadedProductCollection();
+
                 $ids = '';
 
                 foreach ($products as $item) {
