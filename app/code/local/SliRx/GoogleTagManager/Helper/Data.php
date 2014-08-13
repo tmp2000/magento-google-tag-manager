@@ -1,6 +1,12 @@
 <?php
 
 /**
+ * @author     Karazey Sergey <karazey.sergey@gmail.com>
+ * @copyright  2014 Karazey Sergey
+ * @created    10:00 27/06/2014
+ */
+
+/**
  * Class SliRx_GoogleTagManager_Helper_Data
  */
 class SliRx_GoogleTagManager_Helper_Data extends Mage_Core_Helper_Abstract

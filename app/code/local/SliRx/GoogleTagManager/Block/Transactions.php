@@ -1,6 +1,12 @@
 <?php
 
 /**
+ * @author     Karazey Sergey <karazey.sergey@gmail.com>
+ * @copyright  2014 Karazey Sergey
+ * @created    10:00 27/06/2014
+ */
+
+/**
  * Class SliRx_GoogleTagManager_Block_Transactions
  */
 class SliRx_GoogleTagManager_Block_Transactions extends Mage_Checkout_Block_Success
@@ -66,7 +72,7 @@ class SliRx_GoogleTagManager_Block_Transactions extends Mage_Checkout_Block_Succ
             $products[] = [
                 'sku'      => $product->getSku(),
                 'name'     => $product->getName(),
-//                'category' => '',
+                //                'category' => '',
                 'price'    => round($price, 2),
                 'quantity' => (int)$tmpItems[$product->getId()]->getQty_ordered()
             ];
