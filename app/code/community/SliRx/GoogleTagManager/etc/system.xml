@@ -33,7 +33,7 @@
 							<show_in_store>1</show_in_store>
 						</enable>
 						<container_id translate="label">
-						<label>Container ID</label>
+							<label>Container ID</label>
 							<frontend_type>text</frontend_type>
 							<sort_order>1</sort_order>
 							<show_in_default>1</show_in_default>

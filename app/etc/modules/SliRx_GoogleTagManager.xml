@@ -3,7 +3,7 @@
 	<modules>
 		<SliRx_GoogleTagManager>
 			<active>true</active>
-			<codePool>local</codePool>
+			<codePool>community</codePool>
 		</SliRx_GoogleTagManager>
 	</modules>
 </config>
