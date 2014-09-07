@@ -25,7 +25,8 @@ class SliRx_GoogleTagManager_Block_Transactions extends Mage_Checkout_Block_Succ
 
         if ($this->_orderId) {
             $order = Mage::getModel('sales/order')->loadByAttribute('increment_id', $this->_orderId);
-            $items = $order->getAllItems();
+//            $items = $order->getAllItems();
+            $items = $order->getAllVisibleItems();
             $products = $this->_getProducts($items);
 
             // calculation price of all products
@@ -53,28 +54,29 @@ class SliRx_GoogleTagManager_Block_Transactions extends Mage_Checkout_Block_Succ
     {
         $products = array();
 
-        $tmpItems = array();
-        // add products id to array
-        $ids = array();
-        foreach ($items as $item) {
-            $ids[] = $item->getProductId();
-            $tmpItems[$item->getProductId()] = $item;
-        }
+        foreach ($items as $orderItem) {
+            if (intval($orderItem->getPrice()) === 0) {
+                continue;
+            }
 
-        $productsCollection = Mage::getModel('catalog/product')
-            ->getCollection()
-            ->addAttributeToSelect(array('cost', 'price', 'name', 'sku'))
-            ->addIdFilter($ids);
+            /*
+             * todo implement in future releases: if in configuration selected "send to GA only earnings"
+             * but for product must be set cost
+             */
+            // $price = $orderItem->getPrice() - $orderItem->getCost();
+            $price = $orderItem->getPrice();
 
-        foreach ($productsCollection as $product) {
-            $price = $product->getPrice() - $product->getCost();
+            $product = Mage::getModel('catalog/product')->load($orderItem->getProductId());
+
+            $categoryIds = $product->getCategoryIds();
+            $category = Mage::getModel('catalog/category')->load($categoryIds[0]);
 
             $products[] = array(
-                'sku'      => $product->getSku(),
-                'name'     => $product->getName(),
-                //                'category' => '',
+                'sku'      => $orderItem->getSku(),
+                'name'     => $orderItem->getName(),
+                'category' => $category->getName(),
                 'price'    => round($price, 2),
-                'quantity' => (int)$tmpItems[$product->getId()]->getQty_ordered()
+                'quantity' => (int)$orderItem->getQty_ordered()
             );
         }
 
