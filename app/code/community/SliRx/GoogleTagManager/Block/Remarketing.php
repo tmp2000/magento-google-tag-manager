@@ -13,18 +13,18 @@ class SliRx_GoogleTagManager_Block_Remarketing extends Mage_Core_Block_Template
 {
     public function getRemarketingData()
     {
-        $result = [
+        $result = array(
             'event'             => 'fireRemarketingTag',
-            'google_tag_params' => []
-        ];
+            'google_tag_params' => array()
+        );
 
         $pageType = $this->getPageType();
 
         switch ($pageType) {
             case 'home':
-                $result['google_tag_params'] = [
+                $result['google_tag_params'] = array(
                     'ecomm_pagetype' => $pageType
-                ];
+                );
 
                 break;
 
@@ -41,21 +41,21 @@ class SliRx_GoogleTagManager_Block_Remarketing extends Mage_Core_Block_Template
                     $ids .= "'" . $item->getSku() . "'";
                 }
 
-                $result['google_tag_params'] = [
+                $result['google_tag_params'] = array(
                     'ecomm_prodid'   => '[' . $ids . ']',
                     'ecomm_pagetype' => $pageType
-                ];
+                );
 
                 break;
 
             case 'product':
                 $product = Mage::registry('current_product');
 
-                $result['google_tag_params'] = [
+                $result['google_tag_params'] = array(
                     'ecomm_prodid'     => $product->getSku(),
                     'ecomm_pagetype'   => $pageType,
                     'ecomm_totalvalue' => round($product->getPrice(), 2),
-                ];
+                );
 
                 break;
 
@@ -73,11 +73,11 @@ class SliRx_GoogleTagManager_Block_Remarketing extends Mage_Core_Block_Template
                     $ids .= "'" . $item->getSku() . "'";
                 }
 
-                $result['google_tag_params'] = [
+                $result['google_tag_params'] = array(
                     'ecomm_prodid'     => '[' . $ids . ']',
                     'ecomm_pagetype'   => $pageType,
                     'ecomm_totalvalue' => round($grandTotal, 2),
-                ];
+                );
 
                 break;
 
@@ -88,7 +88,7 @@ class SliRx_GoogleTagManager_Block_Remarketing extends Mage_Core_Block_Template
                     $order = Mage::getModel('sales/order')->loadByAttribute('increment_id', $orderId);
                     $items = $order->getAllItems();
 
-                    $ids = [];
+                    $ids = array();
 
                     foreach ($items as $item) {
                         $ids[] = $item->getProductId();
@@ -109,11 +109,11 @@ class SliRx_GoogleTagManager_Block_Remarketing extends Mage_Core_Block_Template
                         $ids .= "'" . $item->getSku() . "'";
                     }
 
-                    $result['google_tag_params'] = [
+                    $result['google_tag_params'] = array(
                         'ecomm_prodid'     => '[' . $ids . ']',
                         'ecomm_pagetype'   => $pageType,
                         'ecomm_totalvalue' => round($order->getGrandTotal(), 2),
-                    ];
+                    );
                 }
 
                 break;

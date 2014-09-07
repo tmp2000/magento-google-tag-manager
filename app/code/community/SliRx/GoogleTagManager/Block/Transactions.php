@@ -21,7 +21,7 @@ class SliRx_GoogleTagManager_Block_Transactions extends Mage_Checkout_Block_Succ
     public function getTransactionsData()
     {
         $helper = Mage::helper('slirx_google_tag_manager');
-        $data = [];
+        $data = array();
 
         if ($this->_orderId) {
             $order = Mage::getModel('sales/order')->loadByAttribute('increment_id', $this->_orderId);
@@ -34,14 +34,14 @@ class SliRx_GoogleTagManager_Block_Transactions extends Mage_Checkout_Block_Succ
                 $priceAll += $item['price'] * $item['quantity'];
             }
 
-            $data = [
+            $data = array(
                 'transactionId'          => $order->getIncrementId(),
                 'transactionAffiliation' => $helper->getTransactionAffiliation(),
                 'transactionTotal'       => $priceAll,
                 'transactionTax'         => '',
                 'transactionShipping'    => round($order->getShippingAmount(), 2),
                 'transactionProducts'    => $products
-            ];
+            );
         }
 
         $data = json_encode($data);
@@ -51,11 +51,11 @@ class SliRx_GoogleTagManager_Block_Transactions extends Mage_Checkout_Block_Succ
 
     protected function _getProducts($items)
     {
-        $products = [];
+        $products = array();
 
-        $tmpItems = [];
+        $tmpItems = array();
         // add products id to array
-        $ids = [];
+        $ids = array();
         foreach ($items as $item) {
             $ids[] = $item->getProductId();
             $tmpItems[$item->getProductId()] = $item;
@@ -63,19 +63,19 @@ class SliRx_GoogleTagManager_Block_Transactions extends Mage_Checkout_Block_Succ
 
         $productsCollection = Mage::getModel('catalog/product')
             ->getCollection()
-            ->addAttributeToSelect(['cost', 'price', 'name', 'sku'])
+            ->addAttributeToSelect(array('cost', 'price', 'name', 'sku'))
             ->addIdFilter($ids);
 
         foreach ($productsCollection as $product) {
             $price = $product->getPrice() - $product->getCost();
 
-            $products[] = [
+            $products[] = array(
                 'sku'      => $product->getSku(),
                 'name'     => $product->getName(),
                 //                'category' => '',
                 'price'    => round($price, 2),
                 'quantity' => (int)$tmpItems[$product->getId()]->getQty_ordered()
-            ];
+            );
         }
 
         return $products;
