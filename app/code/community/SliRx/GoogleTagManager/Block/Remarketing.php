@@ -51,10 +51,17 @@ class SliRx_GoogleTagManager_Block_Remarketing extends Mage_Core_Block_Template
             case 'product':
                 $product = Mage::registry('current_product');
 
+                $price = $product->getPrice();
+
+                // if bundled product - get minimal price
+                if ($product->getTypeId() === Mage_Catalog_Model_Product_Type::TYPE_BUNDLE) {
+                    $price = Mage::getModel('bundle/product_price')->getTotalPrices($product, 'min', 1);
+                }
+
                 $result['google_tag_params'] = array(
                     'ecomm_prodid'     => $product->getSku(),
                     'ecomm_pagetype'   => $pageType,
-                    'ecomm_totalvalue' => round($product->getPrice(), 2),
+                    'ecomm_totalvalue' => round($price, 2),
                 );
 
                 break;

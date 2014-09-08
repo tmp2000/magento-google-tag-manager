@@ -25,7 +25,6 @@ class SliRx_GoogleTagManager_Block_Transactions extends Mage_Checkout_Block_Succ
 
         if ($this->_orderId) {
             $order = Mage::getModel('sales/order')->loadByAttribute('increment_id', $this->_orderId);
-//            $items = $order->getAllItems();
             $items = $order->getAllVisibleItems();
             $products = $this->_getProducts($items);
 
