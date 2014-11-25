@@ -11,6 +11,6 @@
 $helper = Mage::helper('slirx_google_tag_manager');
 if ($helper->isActive() && $helper->isActiveTransaction()): ?>
 <script type="text/javascript">
-    dataLayer = [ <?= $this->getTransactionsData() ?> ];
+    dataLayer = [ <?php echo $this->getTransactionsData() ?> ];
 </script>
 <?php endif; ?>
