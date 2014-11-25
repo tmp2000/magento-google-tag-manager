@@ -13,7 +13,7 @@ if ($helper->isActive() && $helper->isActiveRemarketing()): ?>
 <script type="text/javascript">
     jQuery(function() {
         try {
-            dataLayer.push(<?= $this->getRemarketingData() ?>);
+            dataLayer.push(<?php echo $this->getRemarketingData() ?>);
         }
         catch (err) {
         }
