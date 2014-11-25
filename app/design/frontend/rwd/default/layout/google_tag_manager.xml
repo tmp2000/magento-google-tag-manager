@@ -13,7 +13,7 @@
 			<block type="slirx_google_tag_manager/code" name="google_tag_manager_code" as="gtm_code"
 			       template="slirx/google_tag_manager/code.phtml"/>
 		</reference>
-		<reference name="footer">
+		<reference name="before_body_end">
 			<block type="slirx_google_tag_manager/remarketing"
 			       name="google_tag_manager_remarketing"
 			       as="gtm_remarketing"
@@ -60,4 +60,18 @@
 			</action>
 		</reference>
 	</catalog_product_view>
+	<catalogsearch_result_index>
+		<reference name="google_tag_manager_remarketing">
+			<action method="setPageType">
+				<type>searchresults</type>
+			</action>
+		</reference>	
+	</catalogsearch_result_index>
+	<catalogsearch_advanced_result>
+		<reference name="google_tag_manager_remarketing">
+			<action method="setPageType">
+				<type>searchresults</type>
+			</action>
+		</reference>	
+	</catalogsearch_advanced_result>	
 </layout>
